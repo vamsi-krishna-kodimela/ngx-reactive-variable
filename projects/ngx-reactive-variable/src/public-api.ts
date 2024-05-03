@@ -1,2 +1,1 @@
-
-export * from './lib/reactive-variable.class';
+export * from './lib/reactive-variable';
