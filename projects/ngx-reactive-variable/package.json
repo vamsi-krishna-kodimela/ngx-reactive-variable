@@ -1,6 +1,6 @@
 {
   "name": "ngx-reactive-variable",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Reactive variable for Angular",
   "author": {
     "name": "Vamsi Krishna Kodimela",

@@ -1,24 +1,41 @@
-# NgxReactiveVariable
+# NGX Reactive Variable
+## Description
+This package is implementation of the [Reactive Variable Concept](https://medium.com/angular-simplified/reactive-variable-architecture-in-angular-7ced5fb0dcbb)  for Angular 17 or more.
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
 
-## Code scaffolding
+## Installation
+Available via npm as [@ngx-reactive-variable](https://www.npmjs.com/package/ngx-reactive-variable)
+```
+npm i ngx-reactive-varaible
+```
+## How to use
+Import ReactiveVariable
+```
+import {ReactiveVariable, REACTIVE_VARIABLE_TYPE } from "ngx-reactive-variable";
+```
+Initializing a variable.
+```
+const selection = ReactiveVariable<string>("Apple",REACTIVE_VARIABLE_TYPE.BEHAVIORAL);
+```
+Usage of value at the instance
 
-Run `ng generate component component-name --project ngx-reactive-variable` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-reactive-variable`.
-> Note: Don't forget to add `--project ngx-reactive-variable` or else it will be added to the default project in your `angular.json` file. 
+```
+// Get value at the instance
+console.log(selection.value)
+```
+Listening to the value change
+```
+// For SUBJECT or BEHAVIORAL type
+selection.value$.subscribe({
+    next:(value)=>{
+        console.log(value);
+    }
+});
 
-## Build
-
-Run `ng build ngx-reactive-variable` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Publishing
-
-After building your library with `ng build ngx-reactive-variable`, go to the dist folder `cd dist/ngx-reactive-variable` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test ngx-reactive-variable` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+// For SIGNAL type
+selection.value$(); // It emits the signal value which we can directly use in template
+```
+Setting a value
+```
+selection.value="Hello World!";
+```
